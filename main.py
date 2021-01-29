@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import  messagebox
 import math
 
+
 # constant
 xclick = 700
 yclick = 700
@@ -9,8 +10,8 @@ has_pressed = 0
 p_turn = True
 
 #__builtins__.print(xclick)
-
-visual_board = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
+#[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
+visual_board = [[0]*8]*8
 print(visual_board)
 
 def display_coordinates(event):
@@ -22,6 +23,7 @@ def display_coordinates(event):
 # Finds coords of the click
 
 def click_coords(event, xclick, yclick):
+    global has_pressed
 
 
     xclick = event.x
@@ -47,7 +49,7 @@ def click_coords(event, xclick, yclick):
     print(intypos)
     my_label["text"] = ((xpos),",",(ypos))
     has_pressed += 1
-    add_piece(xpos, ypos,intypos,intxpos)
+    add_piece(xpos, ypos,intypos,intxpos,visual_board)
 
 # adds a piece selected position
 
@@ -57,7 +59,7 @@ def add_piece(xpos,ypos,intypos,intxpos,visual_board):
 
 
     visual_board[array_y_coord][array_x_coord]=1
-    print_grid()
+    print_grid(visual_board)
 
 # prints the grid
 
